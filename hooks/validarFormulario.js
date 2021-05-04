@@ -39,12 +39,20 @@ const ValidarFormulario = (stateInicial, validar, fn) => {
         setSubmitForm(true); //Pasa a true para que se ejecute el useEffect
     }
 
+    //Funcion para que desaparezcan los errores de validación mientras se escribe en el form
+    const OnBlur = e => {  
+        e.preventDefault();
+
+        const erroresValidacion = validar(valores);
+        setError(erroresValidacion);
+    }
+
     return {
         valores,
         error,
-        submitForm,
         OnChange,
-        OnSubmit
+        OnSubmit,
+        OnBlur
     };
 };
 

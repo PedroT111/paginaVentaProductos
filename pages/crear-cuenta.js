@@ -3,7 +3,7 @@ import Layout from '../components/layouts/layout';
 import styled from "styled-components"
 
 //styles
-import {Formulario, Campo, InputSubmit} from "../components/interfazUsuario/formulario";
+import {Formulario, Campo, InputSubmit, ErrorFrom} from "../components/interfazUsuario/formulario";
 
 const Title = styled.h1`
     text-align: center;
@@ -22,7 +22,7 @@ const STATE_INICIAL = {
 
 const CrearCuenta = () => {
 
-    const{ valores, error, submitForm, OnChange, OnSubmit} = ValidarFormulario(STATE_INICIAL, ValidarCuenta, crearCuenta);
+    const{ valores, error, OnChange, OnSubmit, OnBlur} = ValidarFormulario(STATE_INICIAL, ValidarCuenta); //falta crearCuenta
 
     const {usuario, email, contraseña} = valores
 
@@ -45,8 +45,12 @@ const CrearCuenta = () => {
                     name="usuario"
                     value ={usuario}
                     onChange = {OnChange}
+                    onBlur= {OnBlur}
                     />
                 </Campo>
+
+                {error.usuario && <ErrorFrom>{error.usuario}</ErrorFrom>  /*Esto funciona como un operador ternario*/}
+
                 <Campo>
                     <label htmlFor="email">E-mail</label>
                     <input
@@ -54,8 +58,12 @@ const CrearCuenta = () => {
                     placeholder="juan@ventaproductos.com"
                     name="email"
                     value ={email}
-                    onChange = {OnChange}/>
+                    onChange = {OnChange}
+                    onBlur= {OnBlur}/>
                 </Campo>
+
+                {error.email && <ErrorFrom>{error.email}</ErrorFrom>}
+
                 <Campo>
                     <label htmlFor="contraseña">Password</label>
                     <input
@@ -63,8 +71,12 @@ const CrearCuenta = () => {
                     placeholder="Contraseña"
                     name="contraseña"
                     value ={contraseña}
-                    onChange = {OnChange}/>
+                    onChange = {OnChange}
+                    onBlur= {OnBlur}/>
                 </Campo>
+
+                {error.contraseña && <ErrorFrom>{error.contraseña}</ErrorFrom>}
+
                 <div>
                     <InputSubmit
                     type="submit"

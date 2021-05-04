@@ -43,3 +43,14 @@ export const InputSubmit = styled.input`
         cursor: pointer
     }
 `;
+
+export const ErrorFrom = styled.p`
+    background-color: red;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.3rem;
+    text-align: center;
+    color: #fff;
+    
+    
+`;

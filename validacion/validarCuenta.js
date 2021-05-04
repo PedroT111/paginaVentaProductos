@@ -6,8 +6,7 @@ export default function ValidarCuenta(valores) {
 
     if(!valores.usuario){
         errores.usuario = "Nombre de usuario obligatorio"
-    }
-
+    } 
     //Validar email
 
     if(!valores.email){
